@@ -22,3 +22,29 @@
         
         return false;
     }
+
+
+    /**
+     * Vérifie si un utilisateur est déjà connecté ou non.
+     *
+     * @param PDO $db
+     * @return null|array
+     */
+    function getUser(PDO $db): null|array
+    {
+        if ( !isset($_SESSION['auth']) || empty($_SESSION['auth']) ) 
+        {
+            return null;
+        }
+
+        $request = $db->prepare("SELECT * FROM user WHERE id=:id");
+        $request->bindValue(":id", $_SESSION['auth']['id']);
+        $request->execute();
+    
+        if ( $request->rowCount() != 1 ) 
+        {
+            return null;
+        }
+
+        return $request->fetch();
+    }

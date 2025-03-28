@@ -6,6 +6,11 @@ session_start();
 
     $db = connectToDb();
 
+    if ( getUser($db) ) 
+    {
+        return header("Location: index.php");
+    }
+
     // Si les données arrivent au serveur via la métthode POST
     if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
     {
@@ -262,7 +267,7 @@ session_start();
 
                         <div class="text-center mt-3">
                             <p>Vous avez déjà un compte? <a href="">Connectez-vous</a></p>
-                            <p>Retour à l'accueil</p>
+                            <p><a href="/index.php">Retour à l'accueil</a></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
