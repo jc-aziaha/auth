@@ -16,6 +16,7 @@
                         <!-- Form -->
                         <h1 class="text-center my-3 display-5">Inscription</h1>
 
+                        
                         <form method="post">
                             <div class="mb-3">
                                 <input type="text" name="firstName" class="form-control" placeholder="Votre prénom" autofocus>
